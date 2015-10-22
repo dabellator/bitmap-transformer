@@ -1,0 +1,1 @@
+This app will transform a bitmap image file by changing the colors.  Run the file with "node bitmap-transformer.js" followed by the path of the file to edit as the first arguement. Give a filename for the second argument; this will be the location the edited file is saved to.

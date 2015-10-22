@@ -1,0 +1,33 @@
+{
+  "name": "bitmap-transfomer",
+  "version": "0.1.0",
+  "description": "transforms colors on a bitmap image",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigcampbell8/bitmap-transformer.git"
+  },
+  "keywords": [
+    "bitmap",
+    "transformer"
+  ],
+  "author": "craig.campbell8@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/craigcampbell8/bitmap-transformer/issues"
+  },
+  "homepage": "https://github.com/craigcampbell8/bitmap-transformer#readme",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "jscs": "^2.3.5",
+    "mocha": "^2.3.3"
+  }
+}
