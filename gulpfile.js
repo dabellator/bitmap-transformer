@@ -2,7 +2,7 @@
 
 var gulp = require('gulp')
 var jshint = require('gulp-jshint');
-var jscs = require('jscs');
+
 var gulpMocha = require('gulp-mocha');
 
 gulp.task('jshint', function(){
