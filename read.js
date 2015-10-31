@@ -9,6 +9,11 @@ var Bitmap = function(buffer) {
   this.firstPixel = buffer.readUInt32LE(10);
   this.colorPalette = buffer.slice(54, this.firstPixel);
   this.pixelData = buffer.slice(this.firstPixel);
+  this.applyFilter = function(transition, type) {
+    
+    this.colorPalette = transition(this.colorPalette, type);
+    return this.colorPalette;
+  };
   this.write = function(filename) {
      
     fs.writeFile(filename, Buffer.concat(
