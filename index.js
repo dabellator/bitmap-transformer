@@ -1,13 +1,18 @@
 var EE = require('events').EventEmitter;
+var fs = require('fs');
 var process = new EE();
-var reader = require('./lib/read');
+var Bitmap = require('./lib/read');
 var modifier = require('./lib/transform');
 var bitmap = {};
 
 process.on('open', function(file) {
 
-  bitmap = reader(file);
-  process.emit('modify', 'transform', 'green');
+  fs.readFile(__dirname + '/palette-bitmap.bmp', function(err, buf) {
+
+    if (err) throw err;
+    bitmap = new Bitmap(buf);
+    process.emit('modify', 'transform', 'green');
+  });
 });
 
 process.on('modify', function(filter, type) {

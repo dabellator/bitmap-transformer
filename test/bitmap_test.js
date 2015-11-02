@@ -1,13 +1,14 @@
 var expect = require('chai').expect;
-var read = require(__dirname + '/../lib/read');
+var fs = require('fs');
+var Bitmap = require(__dirname + '/../lib/read');
 var transform = require(__dirname + '/../lib/transform');
 var bitmap = {};
 
 describe('the read module', function() {
 
   before(function() {
-    bitmap = read(__dirname + '/../palette-bitmap.bmp');
-    bitmap.applyFilter(transform.transform,'red');
+    var file = fs.readFileSync(__dirname + '/../palette-bitmap.bmp');
+    bitmap = new Bitmap(file);
   });
 
   it('should be parsing bitmap data', function() {
@@ -22,7 +23,8 @@ describe('the read module', function() {
 describe('the transform module', function() {
 
   before(function() {
-    bitmap = read(__dirname + '/../palette-bitmap.bmp');
+    var file = fs.readFileSync(__dirname + '/../palette-bitmap.bmp');
+    bitmap = new Bitmap(file);
     bitmap.applyFilter(transform.transform,'red');
   });
 
