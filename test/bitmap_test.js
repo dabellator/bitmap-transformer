@@ -25,7 +25,7 @@ describe('the transform module', function() {
   before(function() {
     var file = fs.readFileSync(__dirname + '/../palette-bitmap.bmp');
     bitmap = new Bitmap(file);
-    bitmap.applyFilter(transform.transform,'red');
+    bitmap.applyFilter(transform,'red');
   });
 
   it('should transform a color channel', function() {

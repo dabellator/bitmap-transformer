@@ -1,30 +1,30 @@
 var EE = require('events').EventEmitter;
 var fs = require('fs');
-var process = new EE();
+var myEE = new EE();
 var Bitmap = require('./lib/read');
 var modifier = require('./lib/transform');
 var bitmap = {};
 
-process.on('open', function(file) {
-
-  fs.readFile(__dirname + '/palette-bitmap.bmp', function(err, buf) {
+myEE.on('open', function(file) {
+  console.log(file);
+  fs.readFile(__dirname + '/' + file, function(err, buf) {
 
     if (err) throw err;
     bitmap = new Bitmap(buf);
-    process.emit('modify', 'transform', 'green');
+    myEE.emit('modify', process.argv[3]);
   });
 });
 
-process.on('modify', function(filter, type) {
+myEE.on('modify', function(type) {
 
-  bitmap.applyFilter(modifier[filter], type);
-  process.emit('write', 'event.bmp');
+  bitmap.applyFilter(modifier, type);
+  myEE.emit('write', process.argv[4]);
 });
 
-process.on('write', function(name) {
+myEE.on('write', function(name) {
 
   bitmap.write(name);
 });
 
-process.emit('open', 'non-palette-bitmap.bmp');
+myEE.emit('open', process.argv[2]);
 
